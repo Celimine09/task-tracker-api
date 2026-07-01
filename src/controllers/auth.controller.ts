@@ -42,8 +42,8 @@ export const getMe = async (req: AuthRequest, res: Response) => {
 
 export const loginWithGoogle = async (req: Request, res: Response) => {
   try {
-    const { token } = req.body;
-    const user = await loginGoogle(token);
+    const { code } = req.body;
+    const user = await loginGoogle(code);
     const accessToken = generateAccessToken(user.id);
     const refreshToken = generateRefreshToken(user.id);
 

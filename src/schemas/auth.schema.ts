@@ -24,5 +24,5 @@ export const loginSchema = z.object({
 });
 
 export const googleAuthSchema = z.object({
-  token: z.string({ message: "Token is required" }),
+  code: z.string({ message: "Code is required" }),
 });

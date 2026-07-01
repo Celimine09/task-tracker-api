@@ -52,17 +52,25 @@ export const loginUser = async (email: string, password: string) => {
   return userWithoutPassword;
 };
 
-export const loginGoogle = async (token: string) => {
-  const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+export const loginGoogle = async (code: string) => {
+  const googleClient = new OAuth2Client(
+    process.env.GOOGLE_CLIENT_ID,
+    process.env.GOOGLE_CLIENT_SECRET,
+    "postmessage",
+  );
+
+  const { tokens } = await googleClient.getToken(code);
   const ticket = await googleClient.verifyIdToken({
-    idToken: token,
+    idToken: tokens.id_token!,
     audience: process.env.GOOGLE_CLIENT_ID,
   });
 
   const payload = ticket.getPayload();
+
   if (!payload || !payload.email) {
-    throw { statusCode: 400, message: "Invalid Google Token" };
+    throw { statusCode: 400, message: "Invalid Google Token Payload" };
   }
+
   const {
     email,
     sub: googleId,
@@ -71,6 +79,7 @@ export const loginGoogle = async (token: string) => {
   } = payload;
 
   let user = await prisma.user.findUnique({ where: { email } });
+
   if (!user) {
     user = await prisma.user.create({
       data: {
