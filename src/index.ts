@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.route";
 import projectRouter from "./routes/project.route";
 import taskRouter from "./routes/task.route";
+import userRouter from "./routes/user.route";
 import { errorHandler } from "./middlewares/error.middleware";
 
 const app = express();
@@ -22,7 +23,8 @@ app.use(cookieParser());
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/projects", projectRouter);
-app.use("/api/v1/tasks", taskRouter);
+app.use("/api/v1/projects", taskRouter);
+app.use("/api/v1/users", userRouter);
 app.use(errorHandler);
 
 app.listen(PORT, () => {

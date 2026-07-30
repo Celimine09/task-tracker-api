@@ -6,11 +6,11 @@ export const errorHandler = (
   res: Response,
   next: NextFunction,
 ) => {
-  const statusCode = err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
+  console.error("Internal Server Error:", err);
 
-  res.status(statusCode).json({
+  res.status(err.status || err.statusCode || 500).json({
     status: "error",
-    message: message,
+    message: err.message || "Internal Server Error",
+    details: err,
   });
 };

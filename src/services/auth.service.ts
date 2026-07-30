@@ -1,6 +1,7 @@
 import prisma from "./prisma.service";
 import bcrypt from "bcrypt";
 import { OAuth2Client } from "google-auth-library";
+import jwt from "jsonwebtoken";
 
 export const registerUser = async (
   email: string,
@@ -93,4 +94,26 @@ export const loginGoogle = async (code: string) => {
   }
 
   return user;
+};
+
+export const verifyAndRefreshUser = async (refreshToken: string) => {
+  try {
+    const decoded = jwt.verify(
+      refreshToken,
+      process.env.REFRESH_TOKEN_SECRET as string,
+    ) as { userId: string };
+
+    const user = await prisma.user.findUnique({
+      where: { id: decoded.userId },
+    });
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    const { password: _, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+  } catch (error) {
+    throw new Error("Invalid or expired Refresh Token");
+  }
 };

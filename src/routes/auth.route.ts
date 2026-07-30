@@ -4,6 +4,7 @@ import {
   login,
   getMe,
   loginWithGoogle,
+  refresh,
 } from "@/controllers/auth.controller";
 import { authenticate } from "@/middlewares/auth.middleware";
 import { catchAsync } from "@/utils/catchAsync";
@@ -24,5 +25,6 @@ router.post(
   validateData(googleAuthSchema),
   catchAsync(loginWithGoogle),
 );
+router.post("/refresh", refresh);
 
 export default router;
