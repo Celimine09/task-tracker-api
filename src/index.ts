@@ -8,13 +8,23 @@ import userRouter from "./routes/user.route";
 import { errorHandler } from "./middlewares/error.middleware";
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   }),
 );
@@ -27,8 +37,4 @@ app.use("/api/v1/projects", taskRouter);
 app.use("/api/v1/users", userRouter);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(
-    `🚀 Senior Approved: Server is running on http://localhost:${PORT}`,
-  );
-});
+export default app;
