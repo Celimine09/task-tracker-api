@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { getAllUsers } from "@/controllers/user.controller";
-import { authenticate } from "@/middlewares/auth.middleware";
-import { catchAsync } from "@/utils/catchAsync";
+import { getAllUsers } from "@/controllers/user.controller.js";
+import { authenticate } from "@/middlewares/auth.middleware.js";
+import { catchAsync } from "@/utils/catchAsync.js";
 
 const router = Router();
 

@@ -1,11 +1,11 @@
-import type { AuthRequest } from "@/middlewares/auth.middleware";
+import type { AuthRequest } from "@/middlewares/auth.middleware.js";
 import {
   createNewTask,
   getAllTask,
   getTask,
   removeTask,
   updateTaskDetail,
-} from "@/services/task.service";
+} from "@/services/task.service.js";
 import { type Response } from "express";
 
 export const createTask = async (req: AuthRequest, res: Response) => {

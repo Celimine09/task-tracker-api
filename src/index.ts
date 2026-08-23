@@ -1,11 +1,11 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import authRouter from "./routes/auth.route";
-import projectRouter from "./routes/project.route";
-import taskRouter from "./routes/task.route";
-import userRouter from "./routes/user.route";
-import { errorHandler } from "./middlewares/error.middleware";
+import authRouter from "./routes/auth.route.js";
+import projectRouter from "./routes/project.route.js";
+import taskRouter from "./routes/task.route.js";
+import userRouter from "./routes/user.route.js";
+import { errorHandler } from "./middlewares/error.middleware.js";
 
 const app = express();
 

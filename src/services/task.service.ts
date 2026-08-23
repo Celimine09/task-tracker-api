@@ -1,5 +1,5 @@
 import type { TaskStatus, TaskPriority } from "@prisma/client";
-import { getProjectById } from "./project.service";
+import { getProjectById } from "./project.service.js";
 import prisma from "./prisma.service";
 
 export interface UpdateTaskPayload {

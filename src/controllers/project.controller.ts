@@ -7,9 +7,9 @@ import {
   getProjectById,
   updateMember,
   updateProject,
-} from "@/services/project.service";
+} from "@/services/project.service.js";
 import { type Response } from "express";
-import { type AuthRequest } from "@/middlewares/auth.middleware";
+import { type AuthRequest } from "@/middlewares/auth.middleware.js";
 
 export const createProject = async (req: AuthRequest, res: Response) => {
   const { name, description } = req.body;

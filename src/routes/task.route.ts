@@ -4,11 +4,11 @@ import {
   getAllTaskProject,
   getTaskById,
   updateTask,
-} from "@/controllers/task.controller";
-import { authenticate } from "@/middlewares/auth.middleware";
-import { validateData } from "@/middlewares/validate.middleware";
-import { createTaskSchema, updateTaskSchema } from "@/schemas/task.schema";
-import { catchAsync } from "@/utils/catchAsync";
+} from "@/controllers/task.controller.js";
+import { authenticate } from "@/middlewares/auth.middleware.js";
+import { validateData } from "@/middlewares/validate.middleware.js";
+import { createTaskSchema, updateTaskSchema } from "@/schemas/task.schema.js";
+import { catchAsync } from "@/utils/catchAsync.js";
 import { Router } from "express";
 
 const router = Router();

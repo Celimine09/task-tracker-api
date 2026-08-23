@@ -1,5 +1,5 @@
 import type { ProjectStatus, Role } from "@prisma/client";
-import prisma from "./prisma.service";
+import prisma from "./prisma.service.js";
 
 export interface UpdateProjectPayload {
   name?: string;
