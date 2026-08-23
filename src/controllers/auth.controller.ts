@@ -1,14 +1,14 @@
-import type { AuthRequest } from "@/middlewares/auth.middleware.js";
+import type { AuthRequest } from "../middlewares/auth.middleware.js";
 import {
   loginGoogle,
   loginUser,
   registerUser,
   verifyAndRefreshUser,
-} from "@/services/auth.service.js";
+} from "../services/auth.service.js";
 import {
   generateAccessToken,
   generateRefreshToken,
-} from "@/services/token.service.js";
+} from "../services/token.service.js";
 import { type Request, type Response } from "express";
 
 export const register = async (req: Request, res: Response) => {

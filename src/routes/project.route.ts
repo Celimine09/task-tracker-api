@@ -7,17 +7,17 @@ import {
   getProjectDetail,
   updateMemberRole,
   updateProjectDetail,
-} from "@/controllers/project.controller.js";
-import { authenticate } from "@/middlewares/auth.middleware.js";
-import { catchAsync } from "@/utils/catchAsync.js";
+} from "../controllers/project.controller.js";
+import { authenticate } from "../middlewares/auth.middleware.js";
+import { catchAsync } from "../utils/catchAsync.js";
 import { Router } from "express";
 import {
   addMemberSchema,
   createProjectSchema,
   updateMemberRoleSchema,
   updateProjectSchema,
-} from "@/schemas/project.schema.js";
-import { validateData } from "@/middlewares/validate.middleware.js";
+} from "../schemas/project.schema.js";
+import { validateData } from "../middlewares/validate.middleware.js";
 
 const router = Router();
 

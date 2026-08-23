@@ -5,15 +5,15 @@ import {
   getMe,
   loginWithGoogle,
   refresh,
-} from "@/controllers/auth.controller.js";
-import { authenticate } from "@/middlewares/auth.middleware.js";
-import { catchAsync } from "@/utils/catchAsync.js";
-import { validateData } from "@/middlewares/validate.middleware.js";
+} from "../controllers/auth.controller.js";
+import { authenticate } from "../middlewares/auth.middleware.js";
+import { catchAsync } from "../utils/catchAsync.js";
+import { validateData } from "../middlewares/validate.middleware.js";
 import {
   googleAuthSchema,
   loginSchema,
   registerSchema,
-} from "@/schemas/auth.schema.js";
+} from "../schemas/auth.schema.js";
 
 const router = Router();
 
